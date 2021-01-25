@@ -68,13 +68,13 @@ public class Vol implements Serializable {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-	@Override
-	public String toString() {
-		return "Vol [idVol=" + idVol + ", titre=" + titre + ", description=" + description + ", image=" + image
-				+ ", prix=" + prix + "]";
-	}
-	
-	
+//	@Override
+//	public String toString() {
+//		return "Vol [idVol=" + idVol + ", titre=" + titre + ", description=" + description + ", image=" + image
+//				+ ", prix=" + prix + "]";
+//	}
+//	
+//	
 	
 	
 
