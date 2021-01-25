@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Vol implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+	//aa
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long   idVol;
