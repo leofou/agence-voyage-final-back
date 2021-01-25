@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>MAgenceVoyage</title>
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="row">
+		<div th:each="v : ${vols}" class="col-md-4">
+			<h1 th:text="${v.titre}"></h1>
+			<h1 th:text="${v.description}"></h1>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+</body>
+</html>
