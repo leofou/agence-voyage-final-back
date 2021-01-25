@@ -1,0 +1,10 @@
+
+PARTIE BACK
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/leofou/agence-voyage-final-back.git
+git push -u origin main
+
+PARTIE FRONT
