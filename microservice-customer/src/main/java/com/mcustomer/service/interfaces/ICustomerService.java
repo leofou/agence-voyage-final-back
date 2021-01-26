@@ -1,4 +1,4 @@
-package com.mcontroller.service.interfaces;
+package com.mcustomer.service.interfaces;
 
 import java.util.List;
 

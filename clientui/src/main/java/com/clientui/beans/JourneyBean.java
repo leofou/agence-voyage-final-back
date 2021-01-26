@@ -1,20 +1,10 @@
-package com.mjourney.entities;
+package com.clientui.beans;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public abstract class Journey implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public abstract class JourneyBean {
+	
 	private Long journeyId;
 	private Long originLocationCodeId;
 	private Long destinationLocationCodeId;
@@ -23,11 +13,11 @@ public abstract class Journey implements Serializable {
 	private Date endDate;
 	private List<Long> customerIds;
 	
-	public Journey() {
+	public JourneyBean() {
 		super();
 	}
 
-	public Journey(Long journeyId, Long originLocationCodeId, Long destinationLocationCodeId, Long operatingCompanyId,
+	public JourneyBean(Long journeyId, Long originLocationCodeId, Long destinationLocationCodeId, Long operatingCompanyId,
 			Date startDate, Date endDate, List<Long> customerIds) {
 		super();
 		this.journeyId = journeyId;
@@ -39,7 +29,7 @@ public abstract class Journey implements Serializable {
 		this.customerIds = customerIds;
 	}
 
-	public Journey(Long originLocationCodeId, Long destinationLocationCodeId, Long operatingCompanyId, Date startDate,
+	public JourneyBean(Long originLocationCodeId, Long destinationLocationCodeId, Long operatingCompanyId, Date startDate,
 			Date endDate, List<Long> customerIds) {
 		super();
 		this.originLocationCodeId = originLocationCodeId;
@@ -113,5 +103,5 @@ public abstract class Journey implements Serializable {
 				+ operatingCompanyId + ", startDate=" + startDate + ", endDate=" + endDate + ", customerIds="
 				+ customerIds + "]";
 	}
-	
+
 }

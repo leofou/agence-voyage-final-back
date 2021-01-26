@@ -1,20 +1,10 @@
-package com.mcustomer.entities;
+package com.clientui.beans;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+public class CustomerBean {
 
-@Entity
-public class Customer implements Serializable {
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long   customerId;
 	private String customerName;
 	private Date dateBecomeCustomer;
@@ -24,11 +14,10 @@ public class Customer implements Serializable {
 
 	
 	//constructeurs
-	public Customer() {
+	public CustomerBean() {
 		super();
 	}
-	
-	public Customer(String customerName, Date dateBecomeCustomer, String email, Integer phoneNumber,
+	public CustomerBean(String customerName, Date dateBecomeCustomer, String email, Integer phoneNumber,
 			List<Long> journeyIds) {
 		super();
 		this.customerName = customerName;
@@ -38,7 +27,7 @@ public class Customer implements Serializable {
 		this.journeyIds = journeyIds;
 	}
 
-	public Customer(Long customerId, String customerName, Date dateBecomeCustomer, String email, Integer phoneNumber,
+	public CustomerBean(Long customerId, String customerName, Date dateBecomeCustomer, String email, Integer phoneNumber,
 			List<Long> journeyIds) {
 		super();
 		this.customerId = customerId;
@@ -48,7 +37,7 @@ public class Customer implements Serializable {
 		this.phoneNumber = phoneNumber;
 		this.journeyIds = journeyIds;
 	}
-
+	
 	//getter et setter
 	public long getCustomerId() {
 		return customerId;

@@ -7,8 +7,8 @@ import com.mlocation.entities.Location;
 public interface ILocationService {
 	
 	List<Location> findAll();
-	Location findOne(Long id);
-	Location save(Location vol);
-	void delete(Long id);
+	Location findOne(Long codeLocation);
+	Location save(Location location);
+	void delete(Long codeLocation);
 
 }
