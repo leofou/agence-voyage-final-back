@@ -1,6 +1,7 @@
 package com.mjourney.entities;
 
 import java.util.Date;
+import java.util.List;
 
 public class Flight extends Journey{
 
@@ -12,14 +13,15 @@ public class Flight extends Journey{
 		super();
 	}
 
-	public Flight(Long flightNumber) {
-		super();
+	public Flight(Long originLocationCodeId, Long destinationLocationCodeId, Long operatingCompanyId, Date startDate,
+			Date endDate, List<Long> customerIds, Long flightNumber) {
+		super(originLocationCodeId, destinationLocationCodeId, operatingCompanyId, startDate, endDate, customerIds);
 		this.flightNumber = flightNumber;
 	}
 
-	public Flight(long journeyId, Location originLocationCode, Location destinationLocationCode,
-			OperatingCompany operatingCompany, Date startDate, Date endDate, Long flightNumber) {
-		super(journeyId, originLocationCode, destinationLocationCode, operatingCompany, startDate, endDate);
+	public Flight(Long journeyId, Long originLocationCodeId, Long destinationLocationCodeId, Long operatingCompanyId,
+			Date startDate, Date endDate, List<Long> customerIds, Long flightNumber) {
+		super(journeyId, originLocationCodeId, destinationLocationCodeId, operatingCompanyId, startDate, endDate, customerIds);
 		this.flightNumber = flightNumber;
 	}
 
@@ -31,5 +33,16 @@ public class Flight extends Journey{
 		this.flightNumber = flightNumber;
 	}
 
+	@Override
+	public String toString() {
+		return "Flight [flightNumber=" + flightNumber + ", getJourneyId()=" + getJourneyId()
+				+ ", getOriginLocationCodeId()=" + getOriginLocationCodeId() + ", getDestinationLocationCodeId()="
+				+ getDestinationLocationCodeId() + ", getOperatingCompanyId()=" + getOperatingCompanyId()
+				+ ", getStartDate()=" + getStartDate() + ", getEndDate()=" + getEndDate() + ", getCustomerIds()="
+				+ getCustomerIds() + "]";
+	}
+
+	
+	
 
 }

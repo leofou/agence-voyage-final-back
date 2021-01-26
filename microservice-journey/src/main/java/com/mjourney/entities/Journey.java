@@ -2,6 +2,7 @@ package com.mjourney.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,68 +15,71 @@ public abstract class Journey implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long   journeyId;
-	private Location originLocationCode;
-	private Location destinationLocationCode;
-	private OperatingCompany operatingCompany;
+	private Long journeyId;
+	private Long originLocationCodeId;
+	private Long destinationLocationCodeId;
+	private Long operatingCompanyId;
 	private Date startDate;
 	private Date endDate;
+	private List<Long> customerIds;
 	
 	public Journey() {
 		super();
 	}
 
-	public Journey(long journeyId, Location originLocationCode, Location destinationLocationCode,
-			OperatingCompany operatingCompany, Date startDate, Date endDate) {
+	public Journey(Long journeyId, Long originLocationCodeId, Long destinationLocationCodeId, Long operatingCompanyId,
+			Date startDate, Date endDate, List<Long> customerIds) {
 		super();
 		this.journeyId = journeyId;
-		this.originLocationCode = originLocationCode;
-		this.destinationLocationCode = destinationLocationCode;
-		this.operatingCompany = operatingCompany;
+		this.originLocationCodeId = originLocationCodeId;
+		this.destinationLocationCodeId = destinationLocationCodeId;
+		this.operatingCompanyId = operatingCompanyId;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.customerIds = customerIds;
 	}
 
-	public Journey(Location originLocationCode, Location destinationLocationCode, OperatingCompany operatingCompany,
-			Date startDate, Date endDate) {
+	public Journey(Long originLocationCodeId, Long destinationLocationCodeId, Long operatingCompanyId, Date startDate,
+			Date endDate, List<Long> customerIds) {
 		super();
-		this.originLocationCode = originLocationCode;
-		this.destinationLocationCode = destinationLocationCode;
-		this.operatingCompany = operatingCompany;
+		this.originLocationCodeId = originLocationCodeId;
+		this.destinationLocationCodeId = destinationLocationCodeId;
+		this.operatingCompanyId = operatingCompanyId;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.customerIds = customerIds;
 	}
 
-	public long getJourneyId() {
+	public Long getJourneyId() {
 		return journeyId;
 	}
 
-	public void setJourneyId(long journeyId) {
+	public void setJourneyId(Long journeyId) {
 		this.journeyId = journeyId;
 	}
 
-	public Location getOriginLocationCode() {
-		return originLocationCode;
+	public Long getOriginLocationCodeId() {
+		return originLocationCodeId;
 	}
 
-	public void setOriginLocationCode(Location originLocationCode) {
-		this.originLocationCode = originLocationCode;
+	public void setOriginLocationCodeId(Long originLocationCodeId) {
+		this.originLocationCodeId = originLocationCodeId;
 	}
 
-	public Location getDestinationLocationCode() {
-		return destinationLocationCode;
+	public Long getDestinationLocationCodeId() {
+		return destinationLocationCodeId;
 	}
 
-	public void setDestinationLocationCode(Location destinationLocationCode) {
-		this.destinationLocationCode = destinationLocationCode;
+	public void setDestinationLocationCodeId(Long destinationLocationCodeId) {
+		this.destinationLocationCodeId = destinationLocationCodeId;
 	}
 
-	public OperatingCompany getOperatingCompany() {
-		return operatingCompany;
+	public Long getOperatingCompanyId() {
+		return operatingCompanyId;
 	}
 
-	public void setOperatingCompany(OperatingCompany operatingCompany) {
-		this.operatingCompany = operatingCompany;
+	public void setOperatingCompanyId(Long operatingCompanyId) {
+		this.operatingCompanyId = operatingCompanyId;
 	}
 
 	public Date getStartDate() {
@@ -94,6 +98,20 @@ public abstract class Journey implements Serializable {
 		this.endDate = endDate;
 	}
 
-	
+	public List<Long> getCustomerIds() {
+		return customerIds;
+	}
+
+	public void setCustomerIds(List<Long> customerIds) {
+		this.customerIds = customerIds;
+	}
+
+	@Override
+	public String toString() {
+		return "Journey [journeyId=" + journeyId + ", originLocationCodeId=" + originLocationCodeId
+				+ ", destinationLocationCodeId=" + destinationLocationCodeId + ", operatingCompanyId="
+				+ operatingCompanyId + ", startDate=" + startDate + ", endDate=" + endDate + ", customerIds="
+				+ customerIds + "]";
+	}
 	
 }
