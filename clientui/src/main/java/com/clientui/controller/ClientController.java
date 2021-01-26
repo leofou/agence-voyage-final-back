@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.clientui.beans.OperatingCompanyBean;
 import com.clientui.beans.VolBean;
 import com.clientui.beans.VoyageurBean;
+import com.clientui.proxy.MicroServiceOperatingCompanyProxy;
 import com.clientui.proxy.MicroServiceVolProxy;
 import com.clientui.proxy.MicroServiceVoyageurProxy;
 
@@ -20,6 +22,9 @@ public class ClientController {
 	
 	@Autowired
 	private MicroServiceVoyageurProxy microServiceVoyageurProxy;
+	
+	@Autowired
+	private MicroServiceOperatingCompanyProxy microServiceOperatingCompanyProxy;
 	
 	@RequestMapping("/")
 	public String acceuil(Model model) {
@@ -33,6 +38,13 @@ public class ClientController {
 		List<VoyageurBean> voyageurs = microServiceVoyageurProxy.findAll();
 		model.addAttribute("voyageurs", voyageurs);
 		return "Voyageurs";
+	}
+	
+	@RequestMapping("/operatingCompanies")
+	public String operatingCompanies(Model model) {
+		List<OperatingCompanyBean> operatingCompanies = microServiceOperatingCompanyProxy.findAll();
+		model.addAttribute("operatingCompanies", operatingCompanies);
+		return "OperatingCompanies";
 	}
 
 }
