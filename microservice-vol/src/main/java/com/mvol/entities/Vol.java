@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Entity
 public class Vol implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long   idVol;
@@ -18,10 +18,6 @@ public class Vol implements Serializable {
 	private String description;
 	private String image;
 	private double prix;
-	
-	//CECI EST UN COMMENTAIRE
-	
-	
 	
 	public Vol(String titre, String description) {
 		super();
@@ -68,13 +64,13 @@ public class Vol implements Serializable {
 	public void setPrix(double prix) {
 		this.prix = prix;
 	}
-	@Override
-	public String toString() {
-		return "Vol [idVol=" + idVol + ", titre=" + titre + ", description=" + description + ", image=" + image
-				+ ", prix=" + prix + "]";
-	}
-	
-	
+//	@Override
+//	public String toString() {
+//		return "Vol [idVol=" + idVol + ", titre=" + titre + ", description=" + description + ", image=" + image
+//				+ ", prix=" + prix + "]";
+//	}
+//	
+//	
 	
 	
 
