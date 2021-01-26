@@ -31,6 +31,16 @@ public class Customer implements Serializable {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 	}
+	
+	public Customer(long customerId, String customerName, Date dateBecomeCustomer, String email, int phoneNumber) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.dateBecomeCustomer = dateBecomeCustomer;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+	}
+
 	public Customer() {
 		super();
 	}
