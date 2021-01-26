@@ -1,23 +1,30 @@
 package com.clientui.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OperatingCompanyBean {
 	private Long idOperatingComany;
-	private String OperatingCompanyName;
-	private String OperatingCompanyDetails;
-	private List<Long> journeyIds;
+	private String operatingCompanyName;
+	private String operatingCompanyDetails;
+	private List<Long> journeyIds = new ArrayList<Long>();
 	
+	
+	public OperatingCompanyBean() {
+		super();
+	}
+
 	public OperatingCompanyBean(String operatingCompanyName, String operatingCompanyDetails, List<Long> journeyIds) {
 		super();
-		OperatingCompanyName = operatingCompanyName;
-		OperatingCompanyDetails = operatingCompanyDetails;
+		this.operatingCompanyName = operatingCompanyName;
+		this.operatingCompanyDetails = operatingCompanyDetails;
 		this.journeyIds = journeyIds;
 	}
 
-	public OperatingCompanyBean() {
+	public OperatingCompanyBean(String operatingCompanyName, String operatingCompanyDetails) {
 		super();
-		// TODO Auto-generated constructor stub
+		this.operatingCompanyName = operatingCompanyName;
+		this.operatingCompanyDetails = operatingCompanyDetails;
 	}
 
 	public Long getIdOperatingComany() {
@@ -29,19 +36,19 @@ public class OperatingCompanyBean {
 	}
 
 	public String getOperatingCompanyName() {
-		return OperatingCompanyName;
+		return operatingCompanyName;
 	}
 
 	public void setOperatingCompanyName(String operatingCompanyName) {
-		OperatingCompanyName = operatingCompanyName;
+		this.operatingCompanyName = operatingCompanyName;
 	}
 
 	public String getOperatingCompanyDetails() {
-		return OperatingCompanyDetails;
+		return operatingCompanyDetails;
 	}
 
 	public void setOperatingCompanyDetails(String operatingCompanyDetails) {
-		OperatingCompanyDetails = operatingCompanyDetails;
+		this.operatingCompanyDetails = operatingCompanyDetails;
 	}
 
 	public List<Long> getJourneyIds() {
@@ -54,10 +61,11 @@ public class OperatingCompanyBean {
 
 	@Override
 	public String toString() {
-		return "OperatingCompanyBean [idOperatingComany=" + idOperatingComany + ", OperatingCompanyName="
-				+ OperatingCompanyName + ", OperatingCompanyDetails=" + OperatingCompanyDetails + ", journeyIds="
+		return "OperatingCompany [idOperatingComany=" + idOperatingComany + ", operatingCompanyName="
+				+ operatingCompanyName + ", operatingCompanyDetails=" + operatingCompanyDetails + ", journeyIds="
 				+ journeyIds + "]";
 	}
+
 	
 	
 }

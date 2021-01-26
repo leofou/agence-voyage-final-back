@@ -1,8 +1,10 @@
 package com.moperatingcompany.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,9 +16,11 @@ public class OperatingCompany implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idOperatingComany;
-	private String OperatingCompanyName;
-	private String OperatingCompanyDetails;
-	private List<Long> journeyIds;
+	private String operatingCompanyName;
+	private String operatingCompanyDetails;
+	
+	@ElementCollection(targetClass=Long.class)
+	private List<Long> journeyIds = new ArrayList<Long>();
 	
 	public OperatingCompany() {
 		super();
@@ -24,17 +28,15 @@ public class OperatingCompany implements Serializable {
 
 	public OperatingCompany(String operatingCompanyName, String operatingCompanyDetails, List<Long> journeyIds) {
 		super();
-		OperatingCompanyName = operatingCompanyName;
-		OperatingCompanyDetails = operatingCompanyDetails;
+		this.operatingCompanyName = operatingCompanyName;
+		this.operatingCompanyDetails = operatingCompanyDetails;
 		this.journeyIds = journeyIds;
 	}
-	
-	
 
 	public OperatingCompany(String operatingCompanyName, String operatingCompanyDetails) {
 		super();
-		OperatingCompanyName = operatingCompanyName;
-		OperatingCompanyDetails = operatingCompanyDetails;
+		this.operatingCompanyName = operatingCompanyName;
+		this.operatingCompanyDetails = operatingCompanyDetails;
 	}
 
 	public Long getIdOperatingComany() {
@@ -46,19 +48,19 @@ public class OperatingCompany implements Serializable {
 	}
 
 	public String getOperatingCompanyName() {
-		return OperatingCompanyName;
+		return operatingCompanyName;
 	}
 
 	public void setOperatingCompanyName(String operatingCompanyName) {
-		OperatingCompanyName = operatingCompanyName;
+		this.operatingCompanyName = operatingCompanyName;
 	}
 
 	public String getOperatingCompanyDetails() {
-		return OperatingCompanyDetails;
+		return operatingCompanyDetails;
 	}
 
 	public void setOperatingCompanyDetails(String operatingCompanyDetails) {
-		OperatingCompanyDetails = operatingCompanyDetails;
+		this.operatingCompanyDetails = operatingCompanyDetails;
 	}
 
 	public List<Long> getJourneyIds() {
@@ -69,16 +71,16 @@ public class OperatingCompany implements Serializable {
 		this.journeyIds = journeyIds;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public String toString() {
-		return "OperatingCompany [idOperatingComany=" + idOperatingComany + ", OperatingCompanyName="
-				+ OperatingCompanyName + ", OperatingCompanyDetails=" + OperatingCompanyDetails + ", journeyIds="
+		return "OperatingCompany [idOperatingComany=" + idOperatingComany + ", operatingCompanyName="
+				+ operatingCompanyName + ", operatingCompanyDetails=" + operatingCompanyDetails + ", journeyIds="
 				+ journeyIds + "]";
 	}
+
+	
+	
+	
 	
 	
 	
