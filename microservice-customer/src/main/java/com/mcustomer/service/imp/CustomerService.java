@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mcontroller.service.interfaces.ICustomerService;
 import com.mcustomer.entities.Customer;
 import com.mcustomer.repositories.CustomerRepository;
+import com.mcustomer.service.interfaces.ICustomerService;
 
 @Service
 public class CustomerService implements ICustomerService{

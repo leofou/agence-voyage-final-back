@@ -2,6 +2,7 @@ package com.mcustomer.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,8 @@ public class Customer implements Serializable {
 	private Date dateBecomeCustomer;
 	private String email;
 	private int phoneNumber;
+	
+	private List<Journey> journeys;
 	
 	//constructeurs
 	public Customer(String customerName, Date dateBecomeCustomer, String email, int phoneNumber) {

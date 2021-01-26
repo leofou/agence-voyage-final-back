@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mcontroller.service.interfaces.ICustomerService;
 import com.mcustomer.entities.Customer;
+import com.mcustomer.service.interfaces.ICustomerService;
 
 @RestController
 public class CustomerController {
