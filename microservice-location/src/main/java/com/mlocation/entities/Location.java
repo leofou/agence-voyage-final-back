@@ -1,6 +1,7 @@
 package com.mlocation.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,9 +16,11 @@ public class Location implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long   codeLocation;
+	private Long   codeLocation;
 	private String locationName;
 	private LocationType locationType;
+	private List<Long> originLocationCode;
+	private List<Long> destinationLocationCode;
 	
 	
 	
@@ -34,12 +37,32 @@ public class Location implements Serializable {
 	}
 
 
+	public List<Long> getOriginLocationCode() {
+		return originLocationCode;
+	}
+
+
+	public void setOriginLocationCode(List<Long> originLocationCode) {
+		this.originLocationCode = originLocationCode;
+	}
+
+
+	public List<Long> getDestinationLocationCode() {
+		return destinationLocationCode;
+	}
+
+
+	public void setDestinationLocationCode(List<Long> destinationLocationCode) {
+		this.destinationLocationCode = destinationLocationCode;
+	}
+
+
 	public long getCodeLocation() {
 		return codeLocation;
 	}
 
 
-	public void setCodeLocation(long codeLocation) {
+	public void setCodeLocation(Long codeLocation) {
 		this.codeLocation = codeLocation;
 	}
 
