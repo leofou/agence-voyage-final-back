@@ -15,13 +15,13 @@ public class Customer implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long   customerId;
+	private Long   customerId;
 	private String customerName;
 	private Date dateBecomeCustomer;
 	private String email;
-	private int phoneNumber;
-	
-	private List<Journey> journeys;
+	private Integer phoneNumber;
+	private List<Long> journeyIds;
+
 	
 	//constructeurs
 	public Customer(String customerName, Date dateBecomeCustomer, String email, int phoneNumber) {
@@ -49,7 +49,7 @@ public class Customer implements Serializable {
 	public long getCustomerId() {
 		return customerId;
 	}
-	public void setCustomerId(long customerId) {
+	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;
 	}
 	public String getCustomerName() {
@@ -70,12 +70,19 @@ public class Customer implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhoneNumber() {
+	public Integer getPhoneNumber() {
 		return phoneNumber;
 	}
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(Integer phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	public List<Long> getJourneyIds() {
+		return journeyIds;
+	}
+	public void setJourneyIds(List<Long> journeyIds) {
+		this.journeyIds = journeyIds;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", dateBecomeCustomer="
