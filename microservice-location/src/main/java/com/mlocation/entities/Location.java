@@ -20,6 +20,14 @@ public class Location implements Serializable {
 	private LocationType locationType;
 	
 	
+	
+	public Location(String locationName, LocationType locationType) {
+		super();
+		this.locationName = locationName;
+		this.locationType = locationType;
+	}
+
+
 	public Location() {
 		super();
 	
