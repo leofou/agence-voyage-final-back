@@ -9,10 +9,10 @@
 		<version>2.3.5.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.mvol</groupId>
+	<groupId>com.mcustomer</groupId>
 	<artifactId>microservice-customer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>microservice-vol</name>
+	<name>microservice-customer</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
