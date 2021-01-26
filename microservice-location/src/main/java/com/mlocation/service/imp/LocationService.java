@@ -21,18 +21,18 @@ public class LocationService implements ILocationService{
 	}
 
 	@Override
-	public Location findOne(Long id) {
-		return locationRepository.findById(id).get();
+	public Location findOne(Long codeLocation) {
+		return locationRepository.findById(codeLocation).get();
 	}
 
 	@Override
-	public Location save(Location vol) {
-		return locationRepository.save(vol);
+	public Location save(Location location) {
+		return locationRepository.save(location);
 	}
 
 	@Override
-	public void delete(Long id) {
-		locationRepository.deleteById(id);
+	public void delete(Long codeLocation) {
+		locationRepository.deleteById(codeLocation);
 		
 	}
 

@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.mlocation.enumeration.LocationType;
+
 @Entity
 public class Location implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -15,39 +17,59 @@ public class Location implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long   codeLocation;
 	private String locationName;
+	private LocationType locationType;
 	
 	
-	public Location(String locationName) {
-		super();
-		this.locationName = locationName;
-	}
-	public Location(long idLocation, String locationName) {
-		super();
-		this.codeLocation = idLocation;
-		this.locationName = locationName;
-	}
 	public Location() {
 		super();
+	
 	}
-	public long getIdLocation() {
+
+
+	public long getCodeLocation() {
 		return codeLocation;
 	}
-	public void setIdLocation(long idLocation) {
-		this.codeLocation = idLocation;
+
+
+	public void setCodeLocation(long codeLocation) {
+		this.codeLocation = codeLocation;
 	}
+
+
 	public String getLocationName() {
 		return locationName;
 	}
+
+
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
 	}
+
+
+	public LocationType getLocationType() {
+		return locationType;
+	}
+
+
+	public void setLocationType(LocationType locationType) {
+		this.locationType = locationType;
+	}
+
+
+	public Location(long codeLocation, String locationName, LocationType locationType) {
+		super();
+		this.codeLocation = codeLocation;
+		this.locationName = locationName;
+		this.locationType = locationType;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Location [idLocation=" + codeLocation + ", locationName=" + locationName + "]";
+		return "Location [codeLocation=" + codeLocation + ", locationName=" + locationName + ", locationType="
+				+ locationType + "]";
 	}
 	
-//	
-//	
 	
 	
 
