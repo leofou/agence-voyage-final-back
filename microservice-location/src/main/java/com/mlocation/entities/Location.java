@@ -1,8 +1,10 @@
 package com.mlocation.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,8 +21,10 @@ public class Location implements Serializable {
 	private Long   codeLocation;
 	private String locationName;
 	private LocationType locationType;
-	private List<Long> originLocationCode;
-	private List<Long> destinationLocationCode;
+	@ElementCollection(targetClass=Long.class)
+	private List<Long> originLocationCode = new ArrayList<Long>();
+	@ElementCollection(targetClass=Long.class)
+	private List<Long> destinationLocationCode = new ArrayList<Long>();
 	
 	
 	
