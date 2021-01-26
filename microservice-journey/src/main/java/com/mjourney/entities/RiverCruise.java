@@ -42,9 +42,7 @@ public class RiverCruise extends Journey {
 	public void setPortOfRegistration(String portOfRegistration) {
 		this.portOfRegistration = portOfRegistration;
 	}
-	
-	
-	
+
 	
 
 }

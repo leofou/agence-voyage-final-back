@@ -36,6 +36,16 @@ public abstract class Journey implements Serializable {
 		this.endDate = endDate;
 	}
 
+	public Journey(Location originLocationCode, Location destinationLocationCode, OperatingCompany operatingCompany,
+			Date startDate, Date endDate) {
+		super();
+		this.originLocationCode = originLocationCode;
+		this.destinationLocationCode = destinationLocationCode;
+		this.operatingCompany = operatingCompany;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
 	public long getJourneyId() {
 		return journeyId;
 	}
@@ -83,7 +93,6 @@ public abstract class Journey implements Serializable {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
 
 	
 	

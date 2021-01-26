@@ -7,5 +7,7 @@ public class TrainRide extends Journey{
 	public TrainRide() {
 		super();
 	}
+
+
 	
 }

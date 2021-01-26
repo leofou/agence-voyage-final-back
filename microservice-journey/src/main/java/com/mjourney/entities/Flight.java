@@ -31,8 +31,5 @@ public class Flight extends Journey{
 		this.flightNumber = flightNumber;
 	}
 
-	
-	
-	
 
 }
