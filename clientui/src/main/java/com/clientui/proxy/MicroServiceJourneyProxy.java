@@ -2,7 +2,6 @@ package com.clientui.proxy;
 
 import java.util.List;
 
-
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,29 +47,29 @@ public abstract interface MicroServiceJourneyProxy {
 
 	//****************************   Partie TrainRides   *****************************
 
-//	@GetMapping(value="/trainRides")
-//	List<TrainRideBean> findTrainRides();
-//
-//	@GetMapping("/trainRides/{idJourney}")
-//	public TrainRideBean findTrainRide(@PathParam("idJourney") Long idJourney);
-//	
-//	@PostMapping("/trainRides")
-//	public TrainRideBean saveTrainRide(@RequestBody TrainRideBean trainRide);
-//	
-//	@DeleteMapping("/trainRides/{idJourney}")
-//	public void deleteTrainRide(@PathParam("idJourney")Long idJourney);
-//
-//	//****************************   Partie RiverCruises   *****************************
-//
-//	@GetMapping(value="/riverCruises")
-//	List<RiverCruiseBean> findRiverCruises();
-//
-//	@GetMapping("/riverCruises/{idJourney}")
-//	public RiverCruiseBean findRiverCruise(@PathParam("idJourney") Long idJourney);
-//	
-//	@PostMapping("/riverCruises")
-//	public RiverCruiseBean saveRiverCruise(@RequestBody RiverCruiseBean riverCruise);
-//	
-//	@DeleteMapping("/riverCruises/{idJourney}")
-//	public void deleteRiverCruise(@PathParam("idJourney")Long idJourney);
+	@GetMapping(value="/trainRides")
+	List<TrainRideBean> findTrainRides();
+
+	@GetMapping("/trainRides/{idJourney}")
+	public TrainRideBean findTrainRide(@PathVariable("idJourney") Long idJourney);
+	
+	@PostMapping("/trainRides")
+	public TrainRideBean saveTrainRide(@RequestBody TrainRideBean trainRide);
+	
+	@DeleteMapping("/trainRides/{idJourney}")
+	public void deleteTrainRide(@PathVariable("idJourney")Long idJourney);
+
+	//****************************   Partie RiverCruises   *****************************
+
+	@GetMapping(value="/riverCruises")
+	List<RiverCruiseBean> findRiverCruises();
+
+	@GetMapping("/riverCruises/{idJourney}")
+	public RiverCruiseBean findRiverCruise(@PathVariable("idJourney") Long idJourney);
+	
+	@PostMapping("/riverCruises")
+	public RiverCruiseBean saveRiverCruise(@RequestBody RiverCruiseBean riverCruise);
+	
+	@DeleteMapping("/riverCruises/{idJourney}")
+	public void deleteRiverCruise(@PathVariable("idJourney")Long idJourney);
 }
