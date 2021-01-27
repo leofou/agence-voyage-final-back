@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>MAgenceVoyage partie customer test</title>
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="row">
+		<div th:each="c : ${customers}" class="col-md-4">
+			<h1 th:text="${c.customerName}"></h1>
+			<h1 th:text="${c.email}"></h1>
+			<h1 th:text="${c.phoneNumber}"></h1>
+			<h1 th:text="${c.journeyIds}"></h1>
+		</div>
+	</div>
+	<script type="text/javascript"
+		src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+</body>
+</html>

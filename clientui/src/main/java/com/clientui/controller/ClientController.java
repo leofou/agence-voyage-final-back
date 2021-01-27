@@ -7,10 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.clientui.beans.CustomerBean;
 import com.clientui.beans.LocationBean;
 import com.clientui.beans.OperatingCompanyBean;
 import com.clientui.beans.VolBean;
 import com.clientui.beans.VoyageurBean;
+import com.clientui.proxy.MicroServiceCustomerProxy;
 import com.clientui.proxy.MicroServiceLocationProxy;
 import com.clientui.proxy.MicroServiceOperatingCompanyProxy;
 import com.clientui.proxy.MicroServiceVolProxy;
@@ -30,6 +32,9 @@ public class ClientController {
 	
 	@Autowired
 	private MicroServiceLocationProxy  microServiceLocationProxy;
+	
+	@Autowired
+	private MicroServiceCustomerProxy  microServiceCustomerProxy;
 	
 	@RequestMapping("/")
 	public String acceuil(Model model) {
@@ -61,5 +66,15 @@ public class ClientController {
 		List<LocationBean> locations = microServiceLocationProxy.findAll();
 		model.addAttribute("locations", locations);
 		return "locationAccueil";
+	}
+	
+	
+	// 	PARTIE Customers
+
+	@RequestMapping("/customers")
+	public String customerAcceuil(Model model) {
+		List<CustomerBean> customers = microServiceCustomerProxy.findAll();
+		model.addAttribute("customers", customers);
+		return "CustomerAccueil";
 	}
 }
