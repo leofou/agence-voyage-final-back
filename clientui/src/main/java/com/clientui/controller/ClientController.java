@@ -108,20 +108,20 @@ public class ClientController {
 
 	//****************************   Partie TrainRides   *****************************
 
-	@RequestMapping("/trainRides")
-	public String trainRidesAccueil(Model model) {
-		List<TrainRideBean> trainRides = microServiceJourneyProxy.findTrainRides();
-		model.addAttribute("trainRides", trainRides);
-		return "TrainRidesAccueil";
-	}
-	
-	//****************************   Partie RiverCruises   *****************************
-
-	@RequestMapping("/riverCruises")
-	public String riverCruisesAccueil(Model model) {
-		List<RiverCruiseBean> riverCruises = microServiceJourneyProxy.findRiverCruises();
-		model.addAttribute("riverCruises", riverCruises);
-		return "RiverCruisesAccueil";
-	}
+//	@RequestMapping("/trainRides")
+//	public String trainRidesAccueil(Model model) {
+//		List<TrainRideBean> trainRides = microServiceJourneyProxy.findTrainRides();
+//		model.addAttribute("trainRides", trainRides);
+//		return "TrainRidesAccueil";
+//	}
+//	
+//	//****************************   Partie RiverCruises   *****************************
+//
+//	@RequestMapping("/riverCruises")
+//	public String riverCruisesAccueil(Model model) {
+//		List<RiverCruiseBean> riverCruises = microServiceJourneyProxy.findRiverCruises();
+//		model.addAttribute("riverCruises", riverCruises);
+//		return "RiverCruisesAccueil";
+//	}
 	
 }
