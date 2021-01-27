@@ -7,6 +7,7 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,7 @@ public class JourneyController {
 	}
 
 	@GetMapping("/journeys/{idJourney}")
-	public Journey findOne(@PathParam("idJourney") Long id) {
+	public Journey findOne(@PathVariable("idJourney") Long id) {
 		return iJourneyService.findOne(id);
 	}
 
@@ -36,7 +37,7 @@ public class JourneyController {
 	}
 
 	@DeleteMapping("/journeys/{idJourney}")
-	public void delete(@PathParam("idJourney")Long id) {
+	public void delete(@PathVariable("idJourney")Long id) {
 		iJourneyService.delete(id);
 		
 	}
