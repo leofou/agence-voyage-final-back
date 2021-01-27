@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clientui.beans.CustomerBean;
+import com.clientui.beans.FlightBean;
 import com.clientui.beans.LocationBean;
 import com.clientui.beans.OperatingCompanyBean;
 import com.clientui.beans.VolBean;
 import com.clientui.beans.VoyageurBean;
 import com.clientui.proxy.MicroServiceCustomerProxy;
+import com.clientui.proxy.MicroServiceJourneyProxy;
 import com.clientui.proxy.MicroServiceLocationProxy;
 import com.clientui.proxy.MicroServiceOperatingCompanyProxy;
 import com.clientui.proxy.MicroServiceVolProxy;
@@ -37,6 +39,9 @@ public class ClientController {
 	
 	@Autowired
 	private MicroServiceCustomerProxy  microServiceCustomerProxy;
+	
+	@Autowired
+	private MicroServiceJourneyProxy microServiceJourneyProxy;
 	
 	@RequestMapping("/")
 	public String acceuil(Model model) {
@@ -79,4 +84,14 @@ public class ClientController {
 		model.addAttribute("customers", customers);
 		return "CustomerAccueil";
 	}
+	
+	// Partie Journeys
+	
+	@RequestMapping("/flights")
+	public String flightsAccueil(Model model) {
+		List<FlightBean> flights = microServiceJourneyProxy.findAll();
+		model.addAttribute("flights", flights);
+		return "FlightAccueil";
+	}
+	
 }
