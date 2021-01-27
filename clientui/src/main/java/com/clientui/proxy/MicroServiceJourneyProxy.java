@@ -11,33 +11,58 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.clientui.beans.FlightBean;
+import com.clientui.beans.JourneyBean;
+import com.clientui.beans.RiverCruiseBean;
 import com.clientui.beans.TrainRideBean;
 
 @FeignClient(name="microservice-journey", url="localhost:9078/")
 public abstract interface MicroServiceJourneyProxy {
+
+	@GetMapping(value="/journeys")
+	List<JourneyBean> findJourneys();
+
+	@GetMapping("/journeys/{idJourney}")
+	public JourneyBean findJourney(@PathParam("idJourney") Long idJourney);
+	
+	@PostMapping("/journeys")
+	public JourneyBean saveJourney(@RequestBody JourneyBean journey);
+	
+	@DeleteMapping("/journeys/{idJourney}")
+	public void deleteJourney(@PathParam("idJourney")Long idJourney);
 	
 	@GetMapping(value="/flights")
-	List<FlightBean> findAll();
+	List<FlightBean> findFlights();
 
-	@GetMapping("/flights/{idFlight}")
-	public FlightBean findOne(@PathParam("idFlight") Long idFlight);
+	@GetMapping("/flights/{idJourney}")
+	public FlightBean findFlight(@PathParam("idJourney") Long idJourney);
 	
 	@PostMapping("/flights")
-	public FlightBean save(@RequestBody FlightBean flight);
+	public FlightBean saveFlight(@RequestBody FlightBean flight);
 	
-	@DeleteMapping("/flights/{idFlight}")
-	public void delete(@PathParam("idFlight")Long idFlight);
+	@DeleteMapping("/flights/{idJourney}")
+	public void deleteFlight(@PathParam("idJourney")Long idJourney);
 
-//	@GetMapping(value="/trainRides")
-//	List<TrainRideBean> findAll();
-//
-//	@GetMapping("/trainRides/{idTrainRide}")
-//	public TrainRideBean findOne(@PathParam("idTrainRide") Long idTrainRide);
-//	
-//	@PostMapping("/trainRides")
-//	public TrainRideBean save(@RequestBody TrainRideBean trainRide);
-//	
-//	@DeleteMapping("/trainRides/{idTrainRide}")
-//	public void delete(@PathParam("idTrainRide")Long idTrainRide);
+	@GetMapping(value="/trainRides")
+	List<TrainRideBean> findTrainRides();
 
+	@GetMapping("/trainRides/{idJourney}")
+	public TrainRideBean findTrainRide(@PathParam("idJourney") Long idJourney);
+	
+	@PostMapping("/trainRides")
+	public TrainRideBean saveTrainRide(@RequestBody TrainRideBean trainRide);
+	
+	@DeleteMapping("/trainRides/{idJourney}")
+	public void deleteTrainRide(@PathParam("idJourney")Long idJourney);
+
+	@GetMapping(value="/riverCruises")
+	List<RiverCruiseBean> findRiverCruises();
+
+	@GetMapping("/riverCruises/{idJourney}")
+	public RiverCruiseBean findRiverCruise(@PathParam("idJourney") Long idJourney);
+	
+	@PostMapping("/riverCruises")
+	public RiverCruiseBean saveRiverCruise(@RequestBody RiverCruiseBean riverCruise);
+	
+	@DeleteMapping("/riverCruises/{idJourney}")
+	public void deleteRiverCruise(@PathParam("idJourney")Long idJourney);
 }
