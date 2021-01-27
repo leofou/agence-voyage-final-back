@@ -113,11 +113,15 @@ public class ClientController {
 	// 	PARTIE LOCATION
 
 	@RequestMapping("/locations")
-	public String locationAcceuil(Model model) {
-		List<LocationBean> locations = microServiceLocationProxy.findAll();
-		model.addAttribute("locations", locations);
-		return "locationAccueil";
+	public List<LocationBean> locationAcceuil() {
+		return microServiceLocationProxy.findAllLocations();
 	}
+
+	@GetMapping(value="/locations/{codeLocation}")
+	public LocationBean findLocationBean(@PathVariable("codeLocation") Long codeLocation) {
+			return microServiceLocationProxy.findOneLocation(codeLocation);
+		}
+		
 	
 	
 	// 	PARTIE Customers
