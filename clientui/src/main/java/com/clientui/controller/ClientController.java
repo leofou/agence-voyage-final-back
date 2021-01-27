@@ -17,11 +17,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clientui.beans.CustomerBean;
+import com.clientui.beans.FlightBean;
+import com.clientui.beans.JourneyBean;
 import com.clientui.beans.LocationBean;
 import com.clientui.beans.OperatingCompanyBean;
+import com.clientui.beans.RiverCruiseBean;
+import com.clientui.beans.TrainRideBean;
 import com.clientui.beans.VolBean;
 import com.clientui.beans.VoyageurBean;
 import com.clientui.proxy.MicroServiceCustomerProxy;
+import com.clientui.proxy.MicroServiceJourneyProxy;
 import com.clientui.proxy.MicroServiceLocationProxy;
 import com.clientui.proxy.MicroServiceOperatingCompanyProxy;
 import com.clientui.proxy.MicroServiceVolProxy;
@@ -45,6 +50,9 @@ public class ClientController {
 	
 	@Autowired
 	private MicroServiceCustomerProxy  microServiceCustomerProxy;
+	
+	@Autowired
+	private MicroServiceJourneyProxy microServiceJourneyProxy;
 	
 	@RequestMapping("/")
 	public String acceuil(Model model) {
@@ -121,8 +129,41 @@ public class ClientController {
 		return "CustomerAccueil";
 	}
 	
+	//****************************   Partie Journeys   *****************************
+
+	@RequestMapping("/journeys")
+	public String journeysAccueil(Model model) {
+		List<JourneyBean> journeys = microServiceJourneyProxy.findJourneys();
+		model.addAttribute("journeys", journeys);
+		return "JourneysAccueil";
+	}
+
+	//****************************   Partie Flights   *****************************
 	
-	
-	
+	@RequestMapping("/flights")
+	public String flightsAccueil(Model model) {
+		List<FlightBean> flights = microServiceJourneyProxy.findFlights();
+		model.addAttribute("flights", flights);
+		return "FlightAccueil";
+	}
+
+	//****************************   Partie TrainRides   *****************************
+
+//	@RequestMapping("/trainRides")
+//	public String trainRidesAccueil(Model model) {
+//		List<TrainRideBean> trainRides = microServiceJourneyProxy.findTrainRides();
+//		model.addAttribute("trainRides", trainRides);
+//		return "TrainRidesAccueil";
+//	}
+//	
+//	//****************************   Partie RiverCruises   *****************************
+//
+//	@RequestMapping("/riverCruises")
+//	public String riverCruisesAccueil(Model model) {
+//		List<RiverCruiseBean> riverCruises = microServiceJourneyProxy.findRiverCruises();
+//		model.addAttribute("riverCruises", riverCruises);
+//		return "RiverCruisesAccueil";
+//	}
+
 	
 }

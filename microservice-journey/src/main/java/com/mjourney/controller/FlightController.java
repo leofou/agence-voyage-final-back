@@ -25,9 +25,9 @@ public class FlightController {
 		return iFlightService.findAll();
 	}
 
-	@GetMapping("/flights/{idFlight}")
-	public Flight findOne(@PathParam("idFlight") Long id) {
-		return iFlightService.findOne(id);
+	@GetMapping("/flights/{idJourney}")
+	public Flight findOne(@PathParam("idJourney") Long idJourney) {
+		return iFlightService.findOne(idJourney);
 	}
 
 	@PostMapping("/flights")
@@ -35,9 +35,9 @@ public class FlightController {
 		return iFlightService.save(flight);
 	}
 
-	@DeleteMapping("/flights/{idFlight}")
-	public void delete(@PathParam("idFlight")Long id) {
-		iFlightService.delete(id);
+	@DeleteMapping("/flights/{idJourney}")
+	public void delete(@PathParam("idJourney")Long idJourney) {
+		iFlightService.delete(idJourney);
 		
 	}
 

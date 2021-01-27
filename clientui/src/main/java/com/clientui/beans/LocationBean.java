@@ -2,10 +2,12 @@ package com.clientui.beans;
 
 import java.util.List;
 
+
 public class LocationBean {
 
 	private Long   codeLocation;
 	private String locationName;
+	private LocationType locationType;
 	private List<Long> originLocationCode;
 	private List<Long> destinationLocationCode;
 	
@@ -13,6 +15,29 @@ public class LocationBean {
 	
 	public LocationBean() {
 		super();
+	}
+
+
+
+	public LocationBean(String locationName, LocationType locationType, List<Long> originLocationCode,
+			List<Long> destinationLocationCode) {
+		super();
+		this.locationName = locationName;
+		this.locationType = locationType;
+		this.originLocationCode = originLocationCode;
+		this.destinationLocationCode = destinationLocationCode;
+	}
+
+
+
+	public LocationBean(Long codeLocation, String locationName, LocationType locationType,
+			List<Long> originLocationCode, List<Long> destinationLocationCode) {
+		super();
+		this.codeLocation = codeLocation;
+		this.locationName = locationName;
+		this.locationType = locationType;
+		this.originLocationCode = originLocationCode;
+		this.destinationLocationCode = destinationLocationCode;
 	}
 
 
@@ -37,10 +62,27 @@ public class LocationBean {
 
 
 
+	
+
+
+
 	@Override
 	public String toString() {
-		return "LocationBean [codeLocation=" + codeLocation + ", locationName=" + locationName + ", originLocationCode="
-				+ originLocationCode + ", destinationLocationCode=" + destinationLocationCode + "]";
+		return "LocationBean [codeLocation=" + codeLocation + ", locationName=" + locationName + ", locationType="
+				+ locationType + ", originLocationCode=" + originLocationCode + ", destinationLocationCode="
+				+ destinationLocationCode + "]";
+	}
+
+
+
+	public LocationType getLocationType() {
+		return locationType;
+	}
+
+
+
+	public void setLocationType(LocationType locationType) {
+		this.locationType = locationType;
 	}
 
 
