@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clientui.beans.FlightBean;
 import com.clientui.beans.JourneyBean;
@@ -18,6 +19,8 @@ import com.clientui.beans.TrainRideBean;
 @FeignClient(name="microservice-journey", url="localhost:9078/")
 public abstract interface MicroServiceJourneyProxy {
 
+	//****************************   Partie Journeys   *****************************
+	
 	@GetMapping(value="/journeys")
 	List<JourneyBean> findJourneys();
 
@@ -30,6 +33,8 @@ public abstract interface MicroServiceJourneyProxy {
 	@DeleteMapping("/journeys/{idJourney}")
 	public void deleteJourney(@PathParam("idJourney")Long idJourney);
 	
+	//****************************   Partie Flights   *****************************
+
 	@GetMapping(value="/flights")
 	List<FlightBean> findFlights();
 
@@ -42,6 +47,8 @@ public abstract interface MicroServiceJourneyProxy {
 	@DeleteMapping("/flights/{idJourney}")
 	public void deleteFlight(@PathParam("idJourney")Long idJourney);
 
+	//****************************   Partie TrainRides   *****************************
+
 	@GetMapping(value="/trainRides")
 	List<TrainRideBean> findTrainRides();
 
@@ -53,6 +60,8 @@ public abstract interface MicroServiceJourneyProxy {
 	
 	@DeleteMapping("/trainRides/{idJourney}")
 	public void deleteTrainRide(@PathParam("idJourney")Long idJourney);
+
+	//****************************   Partie RiverCruises   *****************************
 
 	@GetMapping(value="/riverCruises")
 	List<RiverCruiseBean> findRiverCruises();
