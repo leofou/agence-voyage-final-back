@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,7 @@ public class Location implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long   codeLocation;
 	private String locationName;
+	@Enumerated(EnumType.STRING)
 	private LocationType locationType;
 	@ElementCollection(targetClass=Long.class)
 	private List<Long> originLocationCode = new ArrayList<Long>();
