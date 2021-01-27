@@ -3,6 +3,9 @@ package com.mjourney.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Flight extends Journey{
 
 	private static final long serialVersionUID = 1L;
