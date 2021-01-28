@@ -10,5 +10,6 @@ public interface ILocationService {
 	Location findOne(Long codeLocation);
 	Location save(Location location);
 	void delete(Long codeLocation);
+	Location update(Location location);
 
 }
