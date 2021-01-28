@@ -42,7 +42,7 @@ public class CustomerController {
 	}
 
 	@PutMapping(value = "/customers/{id}")
-	public Customer updateCustomer(@PathVariable("id") long idCustomer, @RequestBody Customer customer) {
+	public Customer update(@PathVariable("id") long idCustomer, @RequestBody Customer customer) {
 		Customer customer2 = iCustomerService.findOne(idCustomer);
 		customer2.setCustomerName(customer.getCustomerName());
 		customer2.setDateBecomeCustomer(customer.getDateBecomeCustomer());
