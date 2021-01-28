@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,7 +38,20 @@ public class JourneyController {
 	@DeleteMapping("/journeys/{idJourney}")
 	public void delete(@PathVariable("idJourney")Long id) {
 		iJourneyService.delete(id);
-		
 	}
 
+	@PutMapping(value="/journey/{idJourney}")
+	public Journey update(@PathVariable("idJourney") Long idJourney, @RequestBody Journey journey) {
+		Journey currentJourney = iJourneyService.findOne(idJourney);
+		currentJourney.setJourneyId(journey.getJourneyId());
+		currentJourney.setOriginLocationCodeId(journey.getOriginLocationCodeId());
+		currentJourney.setDestinationLocationCodeId(journey.getDestinationLocationCodeId());
+		currentJourney.setOperatingCompanyId(journey.getOperatingCompanyId());
+		currentJourney.setStartDate(journey.getStartDate());
+		currentJourney.setEndDate(journey.getEndDate());
+		currentJourney.setCustomerIds(journey.getCustomerIds());
+		return iJourneyService.save(currentJourney);
+
+	}
+	
 }

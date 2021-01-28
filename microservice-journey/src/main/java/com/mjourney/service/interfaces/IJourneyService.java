@@ -10,5 +10,6 @@ public interface IJourneyService {
 	Journey findOne(Long id);
 	Journey save(Journey journey);
 	void delete(Long id);
+	Journey update(Journey journey);
 
 }

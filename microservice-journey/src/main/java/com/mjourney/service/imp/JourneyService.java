@@ -36,4 +36,9 @@ public class JourneyService implements IJourneyService{
 		
 	}
 
+	@Override
+	public Journey update(Journey journey) {
+		return journeyRepository.save(journey);
+	}
+
 }

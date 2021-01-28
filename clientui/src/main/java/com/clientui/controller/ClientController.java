@@ -173,6 +173,19 @@ public class ClientController {
 		microServiceJourneyProxy.deleteJourney(idJourney);
 	}
 	
+	@PutMapping(value="/journey/{idJourney}")
+	public JourneyBean updateJourney(@PathVariable("idJourney") Long idJourney, @RequestBody JourneyBean journey) {
+		JourneyBean currentJourney = microServiceJourneyProxy.findJourney(idJourney);
+		currentJourney.setJourneyId(journey.getJourneyId());
+		currentJourney.setOriginLocationCodeId(journey.getOriginLocationCodeId());
+		currentJourney.setDestinationLocationCodeId(journey.getDestinationLocationCodeId());
+		currentJourney.setOperatingCompanyId(journey.getOperatingCompanyId());
+		currentJourney.setStartDate(journey.getStartDate());
+		currentJourney.setEndDate(journey.getEndDate());
+		currentJourney.setCustomerIds(journey.getCustomerIds());
+		return microServiceJourneyProxy.saveJourney(currentJourney);
+	}
+	
 
 	//****************************   Partie Flights   *****************************
 	

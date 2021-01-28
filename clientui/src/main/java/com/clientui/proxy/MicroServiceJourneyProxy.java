@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.clientui.beans.FlightBean;
@@ -30,6 +31,10 @@ public abstract interface MicroServiceJourneyProxy {
 	
 	@DeleteMapping("/journeys/{idJourney}")
 	public void deleteJourney(@PathVariable("idJourney")Long idJourney);
+
+	@PutMapping(value="/journeys/{idJourney}")
+	public JourneyBean updateJourney(@PathVariable("idJourney") Long idJourney, @RequestBody JourneyBean journey);
+	
 	
 	//****************************   Partie Flights   *****************************
 
