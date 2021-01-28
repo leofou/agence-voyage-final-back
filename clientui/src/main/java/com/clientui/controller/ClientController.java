@@ -195,8 +195,6 @@ public class ClientController {
 		return microServiceJourneyProxy.findJourneys();
 	}
 
-	// **************************** Partie Flights *****************************
-
 	@GetMapping(value="/journey/{idJourney}")
 	public JourneyBean findJourney(@PathVariable("idJourney") Long idJourney) {
 		return microServiceJourneyProxy.findJourney(idJourney);
@@ -215,7 +213,6 @@ public class ClientController {
 	@PutMapping(value="/journey/{idJourney}")
 	public JourneyBean updateJourney(@PathVariable("idJourney") Long idJourney, @RequestBody JourneyBean journey) {
 		JourneyBean currentJourney = microServiceJourneyProxy.findJourney(idJourney);
-		currentJourney.setJourneyId(journey.getJourneyId());
 		currentJourney.setOriginLocationCodeId(journey.getOriginLocationCodeId());
 		currentJourney.setDestinationLocationCodeId(journey.getDestinationLocationCodeId());
 		currentJourney.setOperatingCompanyId(journey.getOperatingCompanyId());
@@ -247,6 +244,18 @@ public class ClientController {
 	void deleteFlight(@PathVariable("idJourney") Long idJourney) {
 		microServiceJourneyProxy.deleteFlight(idJourney);
 	}
+	
+	@PutMapping(value="/flight/{idJourney}")
+	public FlightBean updateFlight(@PathVariable("idJourney") Long idJourney, @RequestBody FlightBean flight) {
+		FlightBean currentFlight = microServiceJourneyProxy.findFlight(idJourney);
+		currentFlight.setOriginLocationCodeId(flight.getOriginLocationCodeId());
+		currentFlight.setDestinationLocationCodeId(flight.getDestinationLocationCodeId());
+		currentFlight.setOperatingCompanyId(flight.getOperatingCompanyId());
+		currentFlight.setStartDate(flight.getStartDate());
+		currentFlight.setEndDate(flight.getEndDate());
+		currentFlight.setCustomerIds(flight.getCustomerIds());
+		return microServiceJourneyProxy.saveFlight(currentFlight);
+	}
 
 	// **************************** Partie TrainRides *****************************
 
@@ -270,6 +279,18 @@ public class ClientController {
 		microServiceJourneyProxy.deleteTrainRide(idJourney);
 	}
 	
+	@PutMapping(value="/trainRide/{idJourney}")
+	public TrainRideBean updateTrainRide(@PathVariable("idJourney") Long idJourney, @RequestBody TrainRideBean trainRide) {
+		TrainRideBean currentTrainRide = microServiceJourneyProxy.findTrainRide(idJourney);
+		currentTrainRide.setOriginLocationCodeId(trainRide.getOriginLocationCodeId());
+		currentTrainRide.setDestinationLocationCodeId(trainRide.getDestinationLocationCodeId());
+		currentTrainRide.setOperatingCompanyId(trainRide.getOperatingCompanyId());
+		currentTrainRide.setStartDate(trainRide.getStartDate());
+		currentTrainRide.setEndDate(trainRide.getEndDate());
+		currentTrainRide.setCustomerIds(trainRide.getCustomerIds());
+		return microServiceJourneyProxy.saveTrainRide(currentTrainRide);
+	}
+	
 	//****************************   Partie RiverCruises   *****************************
 
 	@RequestMapping("/riverCruises")
@@ -290,6 +311,18 @@ public class ClientController {
 	@DeleteMapping(value="/riverCruise/{idJourney}")
 	void deleteRiverCruise(@PathVariable("idJourney") Long idJourney) {
 		microServiceJourneyProxy.deleteRiverCruise(idJourney);
+	}
+	
+	@PutMapping(value="/riverCruise/{idJourney}")
+	public RiverCruiseBean updateRiverCruise(@PathVariable("idJourney") Long idJourney, @RequestBody RiverCruiseBean riverCruise) {
+		RiverCruiseBean currentRiverCruise = microServiceJourneyProxy.findRiverCruise(idJourney);
+		currentRiverCruise.setOriginLocationCodeId(riverCruise.getOriginLocationCodeId());
+		currentRiverCruise.setDestinationLocationCodeId(riverCruise.getDestinationLocationCodeId());
+		currentRiverCruise.setOperatingCompanyId(riverCruise.getOperatingCompanyId());
+		currentRiverCruise.setStartDate(riverCruise.getStartDate());
+		currentRiverCruise.setEndDate(riverCruise.getEndDate());
+		currentRiverCruise.setCustomerIds(riverCruise.getCustomerIds());
+		return microServiceJourneyProxy.saveRiverCruise(currentRiverCruise);
 	}
 
 }
