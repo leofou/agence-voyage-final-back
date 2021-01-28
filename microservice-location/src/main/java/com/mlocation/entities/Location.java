@@ -107,6 +107,16 @@ public class Location implements Serializable {
 		return "Location [codeLocation=" + codeLocation + ", locationName=" + locationName + ", locationType="
 				+ locationType + "]";
 	}
+
+
+	public Location(String locationName, LocationType locationType, List<Long> originLocationCode,
+			List<Long> destinationLocationCode) {
+		super();
+		this.locationName = locationName;
+		this.locationType = locationType;
+		this.originLocationCode = originLocationCode;
+		this.destinationLocationCode = destinationLocationCode;
+	}
 	
 	
 	
