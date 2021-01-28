@@ -22,20 +22,20 @@ public class MicroserviceLocationApplication {
 		
 	}
 	
-	@Bean
-	CommandLineRunner start(LocationRepository locationRepository) {
-		return (args) -> {
-			Stream.of(new Location(5151515, "Toulouse", LocationType.AIRPORT), 
-					  new Location(98653, "Paris", LocationType.AIRPORT), 
-					  new Location(11513, "Marseille", LocationType.SEAPORT),
-					  new Location(49545, "Londres", LocationType.TRAINSTATION), 
-					  new Location(39994, "Dubai", LocationType.AIRPORT))
-					.forEach((v) -> {
-						locationRepository.save(v);
-					});
-
-		};
-	}
+//	@Bean
+//	CommandLineRunner start(LocationRepository locationRepository) {
+//		return (args) -> {
+//			Stream.of(new Location(5151515, "Toulouse", LocationType.AIRPORT), 
+//					  new Location(98653, "Paris", LocationType.AIRPORT), 
+//					  new Location(11513, "Marseille", LocationType.SEAPORT),
+//					  new Location(49545, "Londres", LocationType.TRAINSTATION), 
+//					  new Location(39994, "Dubai", LocationType.AIRPORT))
+//					.forEach((v) -> {
+//						locationRepository.save(v);
+//					});
+//
+//		};
+//	}
 
 
 }

@@ -2,8 +2,6 @@ package com.mjourney.controller;
 
 import java.util.List;
 
-import javax.websocket.server.PathParam;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mjourney.entities.Flight;
 import com.mjourney.entities.RiverCruise;
 import com.mjourney.service.interfaces.IRiverCruiseService;
 
@@ -29,7 +26,7 @@ public class RiverCruiseController {
 	}
 
 	@GetMapping("/riverCruises/{idRiverCruise}")
-	public RiverCruise findOne(@PathParam("idRiverCruise") Long id) {
+	public RiverCruise findOne(@PathVariable("idRiverCruise") Long id) {
 		return iRiverCruiseService.findOne(id);
 	}
 
@@ -39,7 +36,7 @@ public class RiverCruiseController {
 	}
 
 	@DeleteMapping("/riverCruises/{idRiverCruise}")
-	public void delete(@PathParam("idRiverCruise")Long id) {
+	public void delete(@PathVariable("idRiverCruise")Long id) {
 		iRiverCruiseService.delete(id);
 	}
 	
