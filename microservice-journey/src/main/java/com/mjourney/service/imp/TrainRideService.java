@@ -33,7 +33,11 @@ public class TrainRideService implements ITrainRideService{
 	@Override
 	public void delete(Long id) {
 		trainRideRepository.deleteById(id);
-		
+	}
+	
+	@Override
+	public TrainRide update(TrainRide trainRide) {
+		return trainRideRepository.save(trainRide);
 	}
 
 }

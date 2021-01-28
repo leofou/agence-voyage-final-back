@@ -51,7 +51,6 @@ public class JourneyController {
 		currentJourney.setEndDate(journey.getEndDate());
 		currentJourney.setCustomerIds(journey.getCustomerIds());
 		return iJourneyService.save(currentJourney);
-
 	}
 	
 }

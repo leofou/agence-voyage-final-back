@@ -10,5 +10,7 @@ public interface IRiverCruiseService {
 	RiverCruise findOne(Long id);
 	RiverCruise save(RiverCruise journey);
 	void delete(Long id);
+	RiverCruise update(RiverCruise riverCruise);
+
 
 }

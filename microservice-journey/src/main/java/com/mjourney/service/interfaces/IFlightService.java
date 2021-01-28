@@ -10,5 +10,7 @@ public interface IFlightService {
 	Flight findOne(Long id);
 	Flight save(Flight journey);
 	void delete(Long id);
+	Flight update(Flight flight);
+
 
 }

@@ -10,5 +10,6 @@ public interface ITrainRideService {
 	TrainRide findOne(Long id);
 	TrainRide save(TrainRide journey);
 	void delete(Long id);
+	TrainRide update(TrainRide trainRide);
 
 }

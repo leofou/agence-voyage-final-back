@@ -33,7 +33,11 @@ public class RiverCruiseService implements IRiverCruiseService{
 	@Override
 	public void delete(Long id) {
 		riverCruiseRepository.deleteById(id);
-		
+	}
+	
+	@Override
+	public RiverCruise update(RiverCruise riverCruise) {
+		return riverCruiseRepository.save(riverCruise);
 	}
 
 }

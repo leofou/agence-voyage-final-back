@@ -7,10 +7,13 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mjourney.entities.RiverCruise;
 import com.mjourney.entities.TrainRide;
 import com.mjourney.service.interfaces.ITrainRideService;
 
@@ -38,7 +41,18 @@ public class TrainRideController {
 	@DeleteMapping("/trainRides/{idTrainRide}")
 	public void delete(@PathParam("idTrainRide")Long id) {
 		iTrainRideService.delete(id);
-		
 	}
 
+	@PutMapping(value="/trainRide/{idJourney}")
+	public TrainRide update(@PathVariable("idJourney") Long idJourney, @RequestBody TrainRide trainRide) {
+		TrainRide currentTrainRide = iTrainRideService.findOne(idJourney);
+		currentTrainRide.setOriginLocationCodeId(trainRide.getOriginLocationCodeId());
+		currentTrainRide.setDestinationLocationCodeId(trainRide.getDestinationLocationCodeId());
+		currentTrainRide.setOperatingCompanyId(trainRide.getOperatingCompanyId());
+		currentTrainRide.setStartDate(trainRide.getStartDate());
+		currentTrainRide.setEndDate(trainRide.getEndDate());
+		currentTrainRide.setCustomerIds(trainRide.getCustomerIds());
+		return iTrainRideService.save(currentTrainRide);
+	}
+	
 }

@@ -7,10 +7,13 @@ import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mjourney.entities.Flight;
 import com.mjourney.entities.RiverCruise;
 import com.mjourney.service.interfaces.IRiverCruiseService;
 
@@ -38,7 +41,20 @@ public class RiverCruiseController {
 	@DeleteMapping("/riverCruises/{idRiverCruise}")
 	public void delete(@PathParam("idRiverCruise")Long id) {
 		iRiverCruiseService.delete(id);
-		
+	}
+	
+	@PutMapping(value="/riverCruise/{idJourney}")
+	public RiverCruise update(@PathVariable("idJourney") Long idJourney, @RequestBody RiverCruise riverCruise) {
+		RiverCruise currentRiverCruise = iRiverCruiseService.findOne(idJourney);
+		currentRiverCruise.setOriginLocationCodeId(riverCruise.getOriginLocationCodeId());
+		currentRiverCruise.setDestinationLocationCodeId(riverCruise.getDestinationLocationCodeId());
+		currentRiverCruise.setOperatingCompanyId(riverCruise.getOperatingCompanyId());
+		currentRiverCruise.setStartDate(riverCruise.getStartDate());
+		currentRiverCruise.setEndDate(riverCruise.getEndDate());
+		currentRiverCruise.setCustomerIds(riverCruise.getCustomerIds());
+		currentRiverCruise.setNameOfTheBoat(riverCruise.getNameOfTheBoat());
+		currentRiverCruise.setPortOfRegistration(riverCruise.getPortOfRegistration());
+		return iRiverCruiseService.save(currentRiverCruise);
 	}
 
 }

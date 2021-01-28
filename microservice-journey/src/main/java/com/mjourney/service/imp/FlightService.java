@@ -33,7 +33,11 @@ public class FlightService implements IFlightService{
 	@Override
 	public void delete(Long id) {
 		flightRepository.deleteById(id);
-		
+	}
+
+	@Override
+	public Flight update(Flight flight) {
+		return flightRepository.save(flight);
 	}
 
 }
