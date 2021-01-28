@@ -1,9 +1,6 @@
 package com.clientui.proxy;
 
 import java.util.List;
-
-import javax.websocket.server.PathParam;
-
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.clientui.beans.LocationBean;
-import com.clientui.beans.OperatingCompanyBean;
 
 @FeignClient(name="microservice-location", url="localhost:9098/")
 public interface MicroServiceLocationProxy {
@@ -32,5 +28,5 @@ public interface MicroServiceLocationProxy {
 	
 	@PutMapping(value="/locations/{id}")
 	public LocationBean updateLocation(@PathVariable("id") Long id, @RequestBody LocationBean location);
-
+	
 }

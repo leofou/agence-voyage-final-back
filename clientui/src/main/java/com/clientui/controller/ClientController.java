@@ -110,7 +110,7 @@ public class ClientController {
 	
 	}
 	
-	// 	PARTIE LOCATION
+	// 	---------------  PARTIE LOCATION ------------------------
 
 	@RequestMapping("/locations")
 	public List<LocationBean> locationAcceuil() {
@@ -121,7 +121,25 @@ public class ClientController {
 	public LocationBean findLocationBean(@PathVariable("codeLocation") Long codeLocation) {
 			return microServiceLocationProxy.findOneLocation(codeLocation);
 		}
+	
+	@PostMapping(value="/location")
+	public LocationBean saveLocation(@RequestBody LocationBean location) {
+		 return microServiceLocationProxy.saveLocation(location);}
 		
+	@DeleteMapping(value="/locations/{codeLocation}")
+	void deleteLocation(@PathVariable("codeLocation") Long codeLocation) {
+		microServiceLocationProxy.deleteLocation(codeLocation);
+	}
+		
+		@PutMapping(value="/locations/{codeLocation}")
+		public LocationBean updateLocation(@PathVariable("codeLocation") Long codeLocation, @RequestBody LocationBean location) {
+			LocationBean currentLocation = microServiceLocationProxy.findOneLocation(codeLocation);
+			currentLocation.setCodeLocation(location.getCodeLocation());
+			currentLocation.setLocationName(location.getLocationName());
+			currentLocation.setLocationType(location.getLocationType());
+			return microServiceLocationProxy.saveLocation(currentLocation);
+
+		}
 	
 	
 	// 	PARTIE Customers
