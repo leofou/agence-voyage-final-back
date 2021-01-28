@@ -2,8 +2,6 @@ package com.clientui.controller;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,41 +33,41 @@ import com.clientui.proxy.MicroServiceVoyageurProxy;
 @CrossOrigin
 @Controller
 public class ClientController {
-	
+
 	@Autowired
 	private MicroServiceVolProxy microServiceVolProxy;
-	
+
 	@Autowired
 	private MicroServiceVoyageurProxy microServiceVoyageurProxy;
-	
+
 	@Autowired
 	private MicroServiceOperatingCompanyProxy microServiceOperatingCompanyProxy;
-	
+
 	@Autowired
-	private MicroServiceLocationProxy  microServiceLocationProxy;
-	
+	private MicroServiceLocationProxy microServiceLocationProxy;
+
 	@Autowired
-	private MicroServiceCustomerProxy  microServiceCustomerProxy;
-	
+	private MicroServiceCustomerProxy microServiceCustomerProxy;
+
 	@Autowired
 	private MicroServiceJourneyProxy microServiceJourneyProxy;
-	
+
 	@RequestMapping("/")
 	public String acceuil(Model model) {
 		List<VolBean> vols = microServiceVolProxy.findAll();
 		model.addAttribute("vols", vols);
 		return "Accueil";
 	}
-	
+
 	@RequestMapping("/voyageurs")
 	public String voyageurs(Model model) {
 		List<VoyageurBean> voyageurs = microServiceVoyageurProxy.findAll();
 		model.addAttribute("voyageurs", voyageurs);
 		return "Voyageurs";
 	}
-	
-	//	PARTIE OPERATING COMPANIES
-	
+
+	// PARTIE OPERATING COMPANIES
+
 	/*
 	 * @RequestMapping("/operatingCompanies") public String operatingCompanies(Model
 	 * model) { List<OperatingCompanyBean> operatingCompanies =
@@ -77,86 +75,127 @@ public class ClientController {
 	 * model.addAttribute("operatingCompanies", operatingCompanies); return
 	 * "OperatingCompanies"; }
 	 */
-	
-	@GetMapping(value="/operatingCompanies")
-	public List<OperatingCompanyBean> getOperatingCompany(){
+
+	@GetMapping(value = "/operatingCompanies")
+	public List<OperatingCompanyBean> getOperatingCompany() {
 		return microServiceOperatingCompanyProxy.findAllOperatingCompany();
 	};
-	
-	@GetMapping(value="/operatingCompanies/{id}")
+
+	@GetMapping(value = "/operatingCompanies/{id}")
 	public OperatingCompanyBean findOperatingCompany(@PathVariable("id") Long id) {
 		return microServiceOperatingCompanyProxy.findOneOperatingCompany(id);
 	}
-	
-	@PostMapping(value="/operatingCompanies")
+
+	@PostMapping(value = "/operatingCompanies")
 	public OperatingCompanyBean saveOperatingCompany(@RequestBody OperatingCompanyBean operatingCompany) {
-		 return microServiceOperatingCompanyProxy.saveOperatingCompany(operatingCompany);	 
-			
+		return microServiceOperatingCompanyProxy.saveOperatingCompany(operatingCompany);
+
 	}
-	
-	@PutMapping(value="/operatingCompanies/{id}")
-	public OperatingCompanyBean updateOperatingCompany(@PathVariable("id") long idOperatingCompany, @RequestBody OperatingCompanyBean operatingCompany) {
-		OperatingCompanyBean currentOperatingCompany = microServiceOperatingCompanyProxy.findOneOperatingCompany(idOperatingCompany);
+
+	@PutMapping(value = "/operatingCompanies/{id}")
+	public OperatingCompanyBean updateOperatingCompany(@PathVariable("id") long idOperatingCompany,
+			@RequestBody OperatingCompanyBean operatingCompany) {
+		OperatingCompanyBean currentOperatingCompany = microServiceOperatingCompanyProxy
+				.findOneOperatingCompany(idOperatingCompany);
 		currentOperatingCompany.setOperatingCompanyName(operatingCompany.getOperatingCompanyName());
 		currentOperatingCompany.setIdOperatingComany(operatingCompany.getIdOperatingComany());
 		currentOperatingCompany.setOperatingCompanyDetails(operatingCompany.getOperatingCompanyDetails());
 		return microServiceOperatingCompanyProxy.saveOperatingCompany(currentOperatingCompany);
 
 	}
-	
-	@DeleteMapping(value="/operatingCompanies/{id}")
+
+	@DeleteMapping(value = "/operatingCompanies/{id}")
 	void deleteOperatingCompany(@PathVariable("id") Long id) {
 		microServiceOperatingCompanyProxy.deleteOperatingCompany(id);
-	
+
 	}
-	
-	// 	---------------  PARTIE LOCATION ------------------------
+
+	// --------------- PARTIE LOCATION ------------------------
 
 	@RequestMapping("/locations")
 	public List<LocationBean> locationAcceuil() {
 		return microServiceLocationProxy.findAllLocations();
 	}
 
-	@GetMapping(value="/locations/{codeLocation}")
+	@GetMapping(value = "/locations/{codeLocation}")
 	public LocationBean findLocationBean(@PathVariable("codeLocation") Long codeLocation) {
-			return microServiceLocationProxy.findOneLocation(codeLocation);
-		}
-	
-	@PostMapping(value="/location")
+		return microServiceLocationProxy.findOneLocation(codeLocation);
+	}
+
+	@PostMapping(value = "/location")
 	public LocationBean saveLocation(@RequestBody LocationBean location) {
-		 return microServiceLocationProxy.saveLocation(location);}
-		
-	@DeleteMapping(value="/locations/{codeLocation}")
+		return microServiceLocationProxy.saveLocation(location);
+	}
+
+	@DeleteMapping(value = "/locations/{codeLocation}")
 	void deleteLocation(@PathVariable("codeLocation") Long codeLocation) {
 		microServiceLocationProxy.deleteLocation(codeLocation);
 	}
-		
-		@PutMapping(value="/locations/{codeLocation}")
-		public LocationBean updateLocation(@PathVariable("codeLocation") Long codeLocation, @RequestBody LocationBean location) {
-			LocationBean currentLocation = microServiceLocationProxy.findOneLocation(codeLocation);
-			currentLocation.setCodeLocation(location.getCodeLocation());
-			currentLocation.setLocationName(location.getLocationName());
-			currentLocation.setLocationType(location.getLocationType());
-			return microServiceLocationProxy.saveLocation(currentLocation);
 
-		}
-	
-	
-	// 	PARTIE Customers
 
-	@RequestMapping("/customers")
-	public String customerAcceuil(Model model) {
-		List<CustomerBean> customers = microServiceCustomerProxy.findAll();
-		model.addAttribute("customers", customers);
-		return "CustomerAccueil";
+	@PutMapping(value = "/locations/{codeLocation}")
+	public LocationBean updateLocation(@PathVariable("codeLocation") Long codeLocation,
+			@RequestBody LocationBean location) {
+		LocationBean currentLocation = microServiceLocationProxy.findOneLocation(codeLocation);
+		currentLocation.setCodeLocation(location.getCodeLocation());
+		currentLocation.setLocationName(location.getLocationName());
+		currentLocation.setLocationType(location.getLocationType());
+		return microServiceLocationProxy.saveLocation(currentLocation);
+
 	}
-	
-	//****************************   Partie Journeys   *****************************
+
+	// ******************PARTIE Customers****************************************
+
+//	@RequestMapping("/customers")
+//	public String customerAccueil(Model model) {
+//		List<CustomerBean> customers = microServiceCustomerProxy.findAll();
+//		model.addAttribute("customers", customers);
+//		return "CustomerAccueil";
+//	}
+
+	@GetMapping(value = "/customers")
+	public List<CustomerBean> findAllCustomers() {
+		return microServiceCustomerProxy.findAllCustomers();
+	};
+
+	@GetMapping(value = "/customers/{id}")
+	public CustomerBean findOneCustomer(@PathVariable("id") Long id) {
+		return microServiceCustomerProxy.findOneCustomer(id);
+	}
+
+	@PostMapping(value = "/customers")
+	public CustomerBean saveOperatingCompany(@RequestBody CustomerBean customer) {
+		return microServiceCustomerProxy.saveCustomer(customer);
+
+	}
+
+	@PutMapping(value = "/customers/{id}")
+	public CustomerBean updateCustomer(@PathVariable("id") long idCustomer, @RequestBody CustomerBean customer) {
+		CustomerBean customer2 = microServiceCustomerProxy.findOneCustomer(idCustomer);
+		customer2.setCustomerName(customer.getCustomerName());
+		customer2.setDateBecomeCustomer(customer.getDateBecomeCustomer());
+		customer2.setEmail(customer.getEmail());
+		customer2.setPhoneNumber(customer.getPhoneNumber());
+		customer2.setJourneyIds(customer.getJourneyIds());
+		return microServiceCustomerProxy.saveCustomer(customer2);
+
+	}
+
+	@DeleteMapping(value = "/customers/{id}")
+	void deleteCustomer(@PathVariable("id") Long idCustomer) {
+		microServiceCustomerProxy.deleteCustomer(idCustomer);
+
+	}
+
+	// **************************** Partie Journeys *****************************
+
 	
 	@RequestMapping("/journeys")
 	public List<JourneyBean> findJourneys() {
 		return microServiceJourneyProxy.findJourneys();
 	}
+
+	// **************************** Partie Flights *****************************
 
 	@GetMapping(value="/journey/{idJourney}")
 	public JourneyBean findJourney(@PathVariable("idJourney") Long idJourney) {
@@ -209,7 +248,7 @@ public class ClientController {
 		microServiceJourneyProxy.deleteFlight(idJourney);
 	}
 
-	//****************************   Partie TrainRides   *****************************
+	// **************************** Partie TrainRides *****************************
 
 	@RequestMapping("/trainRides")
 	public List<TrainRideBean> findTrainRides() {
@@ -253,5 +292,4 @@ public class ClientController {
 		microServiceJourneyProxy.deleteRiverCruise(idJourney);
 	}
 
-	
 }
