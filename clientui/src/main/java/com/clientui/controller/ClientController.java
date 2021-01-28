@@ -152,40 +152,93 @@ public class ClientController {
 	}
 	
 	//****************************   Partie Journeys   *****************************
-
+	
 	@RequestMapping("/journeys")
-	public String journeysAccueil(Model model) {
-		List<JourneyBean> journeys = microServiceJourneyProxy.findJourneys();
-		model.addAttribute("journeys", journeys);
-		return "JourneysAccueil";
+	public List<JourneyBean> findJourneys() {
+		return microServiceJourneyProxy.findJourneys();
 	}
+
+	@GetMapping(value="/journey/{idJourney}")
+	public JourneyBean findJourney(@PathVariable("idJourney") Long idJourney) {
+		return microServiceJourneyProxy.findJourney(idJourney);
+	}
+	
+	@PostMapping(value="/journey")
+	public JourneyBean saveJourney(@RequestBody JourneyBean journey) {
+		 return microServiceJourneyProxy.saveJourney(journey);
+	}
+		
+	@DeleteMapping(value="/journey/{idJourney}")
+	void deleteJourney(@PathVariable("idJourney") Long idJourney) {
+		microServiceJourneyProxy.deleteJourney(idJourney);
+	}
+	
 
 	//****************************   Partie Flights   *****************************
 	
 	@RequestMapping("/flights")
-	public String flightsAccueil(Model model) {
-		List<FlightBean> flights = microServiceJourneyProxy.findFlights();
-		model.addAttribute("flights", flights);
-		return "FlightAccueil";
+	public List<FlightBean> findFlights() {
+		return microServiceJourneyProxy.findFlights();
+	}
+
+	@GetMapping(value="/flight/{idJourney}")
+	public FlightBean findFlight(@PathVariable("idJourney") Long idJourney) {
+		return microServiceJourneyProxy.findFlight(idJourney);
+	}
+	
+	@PostMapping(value="/flight")
+	public FlightBean saveFlight(@RequestBody FlightBean flight) {
+		 return microServiceJourneyProxy.saveFlight(flight);
+	}
+		
+	@DeleteMapping(value="/flight/{idJourney}")
+	void deleteFlight(@PathVariable("idJourney") Long idJourney) {
+		microServiceJourneyProxy.deleteFlight(idJourney);
 	}
 
 	//****************************   Partie TrainRides   *****************************
 
-//	@RequestMapping("/trainRides")
-//	public String trainRidesAccueil(Model model) {
-//		List<TrainRideBean> trainRides = microServiceJourneyProxy.findTrainRides();
-//		model.addAttribute("trainRides", trainRides);
-//		return "TrainRidesAccueil";
-//	}
-//	
-//	//****************************   Partie RiverCruises   *****************************
-//
-//	@RequestMapping("/riverCruises")
-//	public String riverCruisesAccueil(Model model) {
-//		List<RiverCruiseBean> riverCruises = microServiceJourneyProxy.findRiverCruises();
-//		model.addAttribute("riverCruises", riverCruises);
-//		return "RiverCruisesAccueil";
-//	}
+	@RequestMapping("/trainRides")
+	public List<TrainRideBean> findTrainRides() {
+		return microServiceJourneyProxy.findTrainRides();
+	}
+
+	@GetMapping(value="/trainRide/{idJourney}")
+	public TrainRideBean findTrainRide(@PathVariable("idJourney") Long idJourney) {
+		return microServiceJourneyProxy.findTrainRide(idJourney);
+	}
+	
+	@PostMapping(value="/trainRide")
+	public TrainRideBean saveTrainRide(@RequestBody TrainRideBean trainRide) {
+		 return microServiceJourneyProxy.saveTrainRide(trainRide);
+	}
+		
+	@DeleteMapping(value="/trainRide/{idJourney}")
+	void deleteTrainRide(@PathVariable("idJourney") Long idJourney) {
+		microServiceJourneyProxy.deleteTrainRide(idJourney);
+	}
+	
+	//****************************   Partie RiverCruises   *****************************
+
+	@RequestMapping("/riverCruises")
+	public List<RiverCruiseBean> findRiverCruises() {
+		return microServiceJourneyProxy.findRiverCruises();
+	}
+
+	@GetMapping(value="/riverCruise/{idJourney}")
+	public RiverCruiseBean findRiverCruise(@PathVariable("idJourney") Long idJourney) {
+		return microServiceJourneyProxy.findRiverCruise(idJourney);
+	}
+	
+	@PostMapping(value="/riverCruise")
+	public RiverCruiseBean saveRiverCruise(@RequestBody RiverCruiseBean riverCruise) {
+		 return microServiceJourneyProxy.saveRiverCruise(riverCruise);
+	}
+		
+	@DeleteMapping(value="/riverCruise/{idJourney}")
+	void deleteRiverCruise(@PathVariable("idJourney") Long idJourney) {
+		microServiceJourneyProxy.deleteRiverCruise(idJourney);
+	}
 
 	
 }
